@@ -5,11 +5,13 @@ export default {
 		extend: {
 			colors: {
                 primary: '#0070f3',
-                secondary: '#f5f6fa',
-                tertiary: '#212121',
                 dark: '#121212',
-                light: '#ffffff',
-                accent: '#BF4A1E',
+                accent: '#FE5230',
+                'ij-black': '#212121',
+                'ij-red': '#FF421C',
+                'ij-green': '#aaa',
+                'ij-blue': '#bfa',
+                'ij-yellow': '#ffc',
             },
             fontFamily: {
                 sans: ['Inter', 'ui-sans-serif', 'system-ui'],
@@ -23,7 +25,10 @@ export default {
             },
 			backgroundImage: {
 				'hero-pattern': 'url(/hero-pattern.webp)',
-			}
+			},
+            letterSpacing: {
+                separated: '0.35px'
+            },
 		},
 	},
 	plugins: [],

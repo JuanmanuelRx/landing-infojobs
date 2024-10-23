@@ -1,0 +1,47 @@
+---
+const ARTICLES = [
+  {
+    title: 'Que esperar de un proceso de selección',
+    contentId: 'selection-process',
+    class: 'bg-yellow-200 text-yellow-800'
+  },
+  {
+    title: 'Los puestos emergentes que van a petarlo',
+    contentId: 'emergent-position',
+    class: 'bg-red-300 text-ij-red'
+  },
+  {
+    title: 'Las opiniones de las empresas',
+    contentId: 'company-opinion',
+    class: 'bg-green-300 text-green-800'
+  },
+  {
+    title: '¿Sin experiencia? Destaca en las entrevistas',
+    contentId: 'no-experience',
+    class: 'bg-blue-300 text-blue-800'
+  }
+]
+---
+<section class="mx-auto max-w-7xl px-4 w-full mb-20">
+  <div class="mx-auto w-full">
+    <h2 class="text-2xl pb-6">Preparate para ganar</h2>
+    <div class="grid grid-cols-1 gap-4">
+      {
+        ARTICLES.map(({ class: className, title, contentId }) => {
+          return (
+          <article class="aspect-square w-full">
+            <button 
+              class:list={[
+              "h-full w-full p-4 rounded-2xl flex justify-start", 
+              className,
+              ]}
+            >
+              <h4 class="font-medium text-2xl text-left text-pretty tracking-separated pr-3">{title}</h4>
+            </button>
+          </article>
+          )
+        })
+      }
+    </div>
+  </div>
+</section>
