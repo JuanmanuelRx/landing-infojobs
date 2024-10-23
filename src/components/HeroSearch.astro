@@ -1,0 +1,76 @@
+---
+import { getStudies } from "@lib/get-ij-studies.ts";
+import SearchIcon from "@icons/Search.astro";
+
+const SHORTCUTS = [
+  {
+    label: '🌿 Sin experiencia',
+    href: 'https://www.infojobs.net/jobsearch/search-results/list.xhtml?keyword=&segmentId=&page=1&sortBy=PUBLICATION_DATE&onlyForeignCountry=false&countryIds=17&sinceDate=ANY&experienceMin=_0_YEARS&experienceMax=_0_YEARS'
+  },
+  {
+    label: '📅 Findes',
+    href: 'https://www.infojobs.net/ofertas-trabajo/fines-de-semana'
+  },
+  {
+    label: '🕒 Media jornada',
+    href: 'https://www.infojobs.net/ofertas-trabajo/media-jornada'
+  },
+  {
+    label: '💼 Prácticas',
+    href: 'https://www.infojobs.net/ofertas-trabajo/practicas'
+  }
+] as const
+
+const studies = await getStudies()
+---
+
+<section class="mx-auto  max-w-7xl px-4 w-full">
+  <div class="bg-hero-pattern mx-auto w-full  px-4 py-6">
+    <h1 class="text-black/80 font-semibold tracking-[0.35px] 
+    text-2xl text-center pb-4">
+      Tu carrera empieza aqui
+    </h1>
+    <search class="bg-white rounded-3xl px-4 py-6 shadow-lg">
+      <form>
+        <div>
+          <select class="w-full py-4 text-gray-600">
+            {
+              studies.map(({ id, value, key }) => {
+                const isDefault = id === 0
+                return (
+                  <option value={key} disabled={isDefault} selected={isDefault}>{value}</option>
+                )
+              })
+            }
+          </select>
+        </div>
+        <div>
+          <input
+            placeholder="Estudios, puesto, empresa..."
+            class="w-full py-4 text-gray-600"/>
+        </div>
+        <div class="mb-8">
+          <input
+            placeholder="Provincia o poblacion"
+            class="w-full py-4 text-gray-600"/>
+        </div>
+        <button 
+          class="rounded-full text-lg font-medium bg-accent hover:saturate-50 transition 
+          text-white py-2 px-4 inline-flex gap-x-2 justify-center items-center w-full"
+        >
+          <SearchIcon />
+          Buscar ofertas
+        </button>
+      </form>
+    </search>
+
+    <footer>
+      <h5 class="text-center pt-8 pb-4">Explora trabajos que se adapten a ti</h5>
+      <div class="flex flex-wrap gap-4 justify-evenly">
+        {
+        SHORTCUTS.map(({label, href}) => <a class="bg-white rounded-full p-4 text-primary" href={href}>{label}</a>)
+      }
+      </div>
+    </footer>
+  </div>
+</section>
